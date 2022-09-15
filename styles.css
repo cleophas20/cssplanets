@@ -32,18 +32,12 @@ body {
   transform: scaleX(0.2);
 }
 
-#first-planet {
-  background-color: blue;
+.planet:after {
+  content: '';
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
 }
-
-#second-planet {
-  background-color: red;
-}
-
-#third-planet {
-  background-color: green;
-}
-
 
 .route {
   width: 100%;
@@ -86,6 +80,56 @@ body {
   animation: hideThirdPlanet 12s infinite;
 }
 
+#first-planet {
+  animation: firstPlanetRender 12s infinite linear;
+}
+
+#first-planet:after {
+  animation: firstPlanetRenderRotater 12s infinite linear;
+}
+
+#second-planet {
+  background-color: red;
+}
+
+#third-planet {
+  background-color: green;
+}
+
+@keyframes firstPlanetRender {
+  0% {
+    background-color: linear-gradient( -90deg, rgb(86, 86, 253) 50%, rgb(60, 60, 175) 50%);
+  }
+  12% {
+    background-color: linear-gradient( -90deg, rgb(86, 86, 253) 50%, rgb(60, 60, 175) 50%);
+  }
+  13% {
+    background: linear-gradient( 90deg, rgb(86, 86, 253) 50%, rgb(60, 60, 175) 50%);
+  }
+  62% {
+    background: linear-gradient( 90deg, rgb(86, 86, 253) 50%, rgb(60, 60, 175) 50%);
+  }
+  63% {
+    background: linear-gradient( -90deg, rgb(86, 86, 253) 50%, rgb(60, 60, 175) 50%);
+  }
+  100% {
+    background-color: linear-gradient( -90deg, rgb(86, 86, 253) 50%, rgb(60, 60, 175) 50%);
+  }
+}
+/*background-color: #25258d;*/
+@keyframes firstPlanetRenderRotater {
+  0% { transform: scaleX(-0.2); background-color: rgb(86, 86, 253);}
+  12% { transform: scaleX(-1); background-color: rgb(86, 86, 253);}
+  13% { transform: scaleX(1); background-color: rgb(86, 86, 253);}
+  37% { transform: scaleX(0); background-color: rgb(86, 86, 253);}
+  38% { transform: scaleX(0); background-color: rgb(60, 60, 175);}
+  62% { transform: scaleX(-1); background-color: rgb(60, 60, 175);}
+  63% { transform: scaleX(1); background-color: rgb(60, 60, 175);}
+  87% { transform: scaleX(0); background-color: rgb(60, 60, 175);}
+  88% { transform: scaleX(0); background-color: rgb(86, 86, 253);}
+  100% { transform: scaleX(-0.2); background-color: rgb(86, 86, 253);}
+}
+
 @keyframes rotate {
   0% {
     transform: rotateZ(0deg);
@@ -107,35 +151,56 @@ body {
 @keyframes hideFirstPlanet {
   0% {
     z-index: 999;
+    transform: scale(0.9);
   }
   25% {
     z-index: -999;
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  75% {
+    transform: scale(1.1);
   }
   100% {
     z-index: 999;
+    transform: scale(0.9);
   }
 }
 
 @keyframes hideSecondPlanet {
   0% {
     z-index: -999;
+    transform: scale(0.95);
   }
-  60% {
+  50% {
     z-index: 999;
+      transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1);
+  }
+  90% {
+    transform: scale(0.9);
   }
   100% {
     z-index: -999;
+    transform: scale(0.95);
   }
 }
 
 @keyframes hideThirdPlanet {
   0% {
     z-index: 999;
+    transform: scale(1.1);
   }
   50% {
     z-index: -999;
+    transform: scale(0.8);
   }
   100% {
     z-index: 999;
+    transform: scale(1.1);
   }
 }
